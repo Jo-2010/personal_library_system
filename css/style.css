@@ -1,0 +1,226 @@
+/*Standard setup for all HTML elements to define how their heights and widths are calculated, including borders and padding in the total.*/
+* {
+    box-sizing: border-box;
+}
+
+/*Standard setup for the "html" tag, defining how it should behave on my site's screen.*/
+html {
+    height: 100%;
+    width: 100%;
+}
+
+/*Standard setup for the "body" tag, defining how it behaves on the site—both as an element itself and in relation to the elements within it—and setting the site's background image.*/
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url('../img/personal_library.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/*Styling class for the site's main title, which is "Personal library".*/
+.mainTitleLibrary {
+    margin: 1.25rem;
+    font-family: "Calligraffitti", cursive;
+    font-size: 4rem;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+/*Styling class for warning, error, and "no books" messages when the book table cannot be displayed.*/
+.messageWarningErrorNoBooks {
+    font-family: "EB Garamond", serif;
+    font-size: 2rem;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+/*Standard setup for the main HTML table tags.*/
+table, th, tr, td {
+    font-family: "EB Garamond", serif;
+    font-size: 1.25rem;
+    border-collapse: collapse;
+    color: #FFFFFF;
+}
+
+/*Setting the background color for data cells embedded within table rows.*/
+tr td {
+    background-color: #C69C6D;
+}
+
+/*Styling some elements of the HTML table's external structure.*/
+table {
+    width: 75%;
+    border: none;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 5px 5px 10px #000000;
+}
+
+/*Styling HTML table headers—how they will be displayed and structured on the site.*/
+th {
+    background-color: #4A2E1B;
+    color: #FFFFFF;
+    text-align: left;
+    padding: 16px 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #E9ECEF;
+    transition: all 0.3s ease-in-out;
+}
+
+table tbody tr:hover td {
+    background-color: #E8EDF5;
+    color: #7F5E46;
+}
+
+.saveBookTitle {
+    margin-bottom: 0;
+    font-family: "Calligraffitti", cursive;
+    font-size: 3rem;
+    text-align: center;
+    color: #ffffff;
+}
+
+.messageSuccessWarningError {
+    font-family: "EB Garamond", serif;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.success {
+    color: #43ca00;
+}
+
+.warning {
+    color: #c59b00;
+}
+
+.error {
+    color: #d32f2f;
+}
+
+.formSaveBook {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.labelInputUni {
+    width: 75%;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.labelInputUni label {
+    font-family: "EB Garamond", serif;
+    font-size: 1.3rem;
+    color: #f0f0f0;
+}
+
+.labelInputUni input {
+    font-family: "EB Garamond", serif;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    border: 2px solid #6e6e6e;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 5px 5px 10px #000000;
+}
+
+.labelInputUni input:focus {
+    border-color: #4a2e1b;
+    box-shadow: 5 5 10px #4a2e1b;
+    transform: scale(1.02);
+    transition: 0.2s; 
+}
+
+.labelInputUni input.errorInput {
+    border: 2px solid #be0000;
+}
+
+.labelInputUni input.errorInput:focus {
+    border-color: #be0000 !important;
+    box-shadow: 5 5 10px #7b0000;
+}
+
+.labelInputUni span.errorMensageInput {
+    transition: 0.2s;
+    font-family: "EB Garamond", serif;
+    color: #ff0000;
+}
+
+.labelInputUni select {
+    font-family: "EB Garamond", serif;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    border: 2px solid #6e6e6e;
+    border-radius: 5px;
+    color: #767676;
+    box-shadow: 5px 5px 10px #000000;
+}
+
+.labelInputUni select.errorInput {
+    border: 2px solid #be0000;
+}
+
+.labelInputUni option.optionSelectable {
+    color: #000000;
+}
+
+.submitEraseUni {
+    width: 75%;
+    margin: 0.5rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.submitEraseUni input {
+    width: 75px;
+    padding: 0.4rem;
+    border: 2px solid #6e6e6e;
+    border-radius: 5px;
+    font-family: "EB Garamond", serif;
+    font-size: 1.1rem;
+    background-color: #ffffff;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px #000000;
+}
+
+.submitEraseUni input:hover {
+    transform: scale(1.02);
+    transition: 0.2s;
+}
+
+.submitEraseUni input[type="submit"]:hover {
+    background-color: #baffba;
+    border-color: #43ca00;
+    box-shadow: 0 0 8px #007b00;
+    transition: 0.2s;
+}
+
+.submitEraseUni input[type="reset"]:hover {
+    background-color: #ffbaba;
+    border-color: #d32f2f;
+    box-shadow: 0 0 8px #7b0000;
+    transition: 0.2s;
+}
