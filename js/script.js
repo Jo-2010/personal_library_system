@@ -7,42 +7,33 @@ const selectPeriodSave = document.getElementById("periodBook");
 const selectStatusSave = document.getElementById("statusBook");
 const formSave = document.getElementById("formSaveBook");
 
-//Calling a function to clear the error, warning success message from the form after a few seconds.
-clearMensage(spanMensageErrorSucess);
+//Calling the function "clearMessage" to clear the error, warning or success message from the form after a few seconds.
+clearMessage(spanMensageErrorSucess);
 
-function clearMensage(spanMensage) {
-    setTimeout(() => {
-        spanMensage.textContent = "";
-    }, 4000);
-}
-
-//Constant validation in inputs, selects and formulary's submit in the save formulary.
+//Attaching event listeners to handle continuous validation of user input in form fields (inputs and selects), form submission (triggering a general validation), and form clearing (resetting all field errors, etc.).
 inputTitleSave.addEventListener("input", () => {
+    //Calling the "validateTitle" function to validate the text of an HTML input as a title.
     validateTitle(inputTitleSave);
 });
 inputAuthorSave.addEventListener("input", () => {
+    //Calling the "validateAuthor" function to validate the text of an HTML input as a author.
     validateAuthor(inputAuthorSave);
 });
 inputYearSave.addEventListener("input", () => {
+    //Calling the "validateYear" function to validate the text of an HTML input as a year.
     validateYear(inputYearSave);
 });
 selectPeriodSave.addEventListener("change", () => {
     validateYear(inputYearSave);
     validatePeriod(selectPeriodSave);
-});
-selectStatusSave.addEventListener("change", () => {
-    validateStatus(selectStatusSave);
-});
-formSave.addEventListener("submit", (event) => {
-    validateFormSave(event);
-});
-
-//Change color in the selected option in the save formulary of period and status of the book.
-selectPeriodSave.addEventListener("change", () => {
     changeColorOptionSelected(selectPeriodSave);
 });
 selectStatusSave.addEventListener("change", () => {
+    validateStatus(selectStatusSave);
     changeColorOptionSelected(selectStatusSave);
+});
+formSave.addEventListener("submit", (event) => {
+    validateFormSave(event);
 });
 formSave.addEventListener("reset", () => {
     setTimeout(() => {
@@ -52,16 +43,25 @@ formSave.addEventListener("reset", () => {
     }, 0);
 });
 
+//Creating the "clearMessage" function, which clears the text of an HTML element after 4 seconds.
+function clearMessage(spanMensage) {
+    setTimeout(() => {
+        spanMensage.textContent = "";
+    }, 4000);
+}
+
+//Creating the "changeColorOptionSelected" function, which sets the correct color for the selected option in a `<select>` tag within an HTML form.
 function changeColorOptionSelected(selectForm) {
     if(selectForm.value === "") {
         selectForm.style.color = "#767676";
     } else {
-        selectForm.style.color = "black";
+        selectForm.style.color = "#000000";
     }
 }
 
-//Functions to validate and invalidate form fields in save formulary.
+//Creating the "validateTitle" function, which is responsible for validating the input title text through various checks; it styles the form field and displays an error message and returning "false" if an issue is found, or clears the error and message and returning "true" if everything is correct.
 function validateTitle(inputToValidate) {
+    //An "if-else if-else" code block responsible for containing all validation checks for a book title.
     if(inputToValidate.value.length === 0) {
         implementErrorFormField(inputToValidate, "Title is Required.");
 
