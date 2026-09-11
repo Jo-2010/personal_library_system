@@ -9,7 +9,7 @@
         echo "<thead>";
         echo "<tr>";
         echo "<th>Title</th>";
-        echo "<th>Author</th>";
+        echo "<th>Author(s)</th>";
         echo "<th>Year</th>";
         echo "<th>Status</th>";
         echo "</tr>";

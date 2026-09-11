@@ -10,7 +10,7 @@ const formSave = document.getElementById("formSaveBook");
 //Calling the function "clearMessage" to clear the error, warning or success message from the form after a few seconds.
 clearMessage(spanMensageErrorSucess);
 
-//Attaching event listeners to handle continuous validation of user input in form fields (inputs and selects), form submission (triggering a general validation), and form clearing (resetting all field errors, etc.).
+//Attaching event listeners to handle continuous validation of user input in form fields(inputs and selects), form submission(triggering a general validation), and form clearing(resetting all field errors, etc.).
 inputTitleSave.addEventListener("input", () => {
     //Calling the "validateTitle" function to validate the text of an HTML input as a title.
     validateTitle(inputTitleSave);
@@ -24,19 +24,24 @@ inputYearSave.addEventListener("input", () => {
     validateYear(inputYearSave);
 });
 selectPeriodSave.addEventListener("change", () => {
-    validateYear(inputYearSave);
+    //Calling the functions "validateYear", "validatePeriod", and "changeColorOptionSelected" to, respectively, validate the period text from the HTML select, validate the year text from the HTML input, and change the color of the selected option in an HTML select element.
     validatePeriod(selectPeriodSave);
+    validateYear(inputYearSave);
     changeColorOptionSelected(selectPeriodSave);
 });
 selectStatusSave.addEventListener("change", () => {
+    //Calling the functions "validateStatus" and "changeColorOptionSelected" to, respectively, validate the status text from the HTML input and change the color of the selected option in an HTML select element.
     validateStatus(selectStatusSave);
     changeColorOptionSelected(selectStatusSave);
 });
 formSave.addEventListener("submit", (event) => {
+    //Calling the "validateFormSave" function to trigger validation for all fields and determine whether to proceed with form submission.
     validateFormSave(event);
 });
 formSave.addEventListener("reset", () => {
+    //Calling the "setTimeout" function so that the form fields are cleared first, and only then the code block is executed.
     setTimeout(() => {
+        //Calling the functions "cleanAllFormFieldsErrors" and—twice—"changeColorOptionSelected" to clear error styling on form fields when resetting the form, and to revert the colors to the original option for two HTML select elements.
         cleanAllFormFieldsErrors();
         changeColorOptionSelected(selectPeriodSave);
         changeColorOptionSelected(selectStatusSave);
@@ -44,17 +49,22 @@ formSave.addEventListener("reset", () => {
 });
 
 //Creating the "clearMessage" function, which clears the text of an HTML element after 4 seconds.
-function clearMessage(spanMensage) {
+function clearMessage(spanMessage) {
+    //Calling the "setTimeout" function to execute a block of code after 4 seconds.
     setTimeout(() => {
-        spanMensage.textContent = "";
+        //Applying nothing as the text content of a "span" tag.
+        spanMessage.textContent = "";
     }, 4000);
 }
 
 //Creating the "changeColorOptionSelected" function, which sets the correct color for the selected option in a `<select>` tag within an HTML form.
 function changeColorOptionSelected(selectForm) {
+    //An "if-else" code block responsible for applying a gray color to the current option of a select tag if its value is empty; otherwise, the color applied to the current option is black.
     if(selectForm.value === "") {
+        //Applying the hexadecimal color "#767676" to the "color" property of the HTML select element.
         selectForm.style.color = "#767676";
     } else {
+        //Applying the hexadecimal color "#000000" to the "color" property of the HTML select element.
         selectForm.style.color = "#000000";
     }
 }
@@ -63,116 +73,172 @@ function changeColorOptionSelected(selectForm) {
 function validateTitle(inputToValidate) {
     //An "if-else if-else" code block responsible for containing all validation checks for a book title.
     if(inputToValidate.value.length === 0) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Title is Required.");
 
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(inputToValidate.value.trim().length === 0) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Title cannot contain only spaces.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(inputToValidate.value.trim().length > 250) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Title cannot exceed 250 characters.");
        
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(inputToValidate.validity.patternMismatch) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Title contains invalid characters.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else {
+        //Calling the "cleanFormFieldError" function, which removes the styling and error message from a form field.
         cleanFormFieldError(inputToValidate);
         
+        //Due to a validation, the function returns "true".
         return true;
     }
 }
 
+//Creating the "validateAuthor" function, which is responsible for validating the input author text through various checks; it styles the form field and displays an error message and returning "false" if an issue is found, or clears the error and message and returning "true" if everything is correct.
 function validateAuthor(inputToValidate) {
+    //An "if-else if-else" code block responsible for containing all validation checks for a book author.
     if(inputToValidate.value.length === 0) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Author is Required.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(inputToValidate.value.trim().length === 0) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Author cannot contain only spaces.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(inputToValidate.value.trim().length < 2) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Author cannot contain fewer than 2 characters.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(inputToValidate.value.trim().length > 100) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Author cannot exceed 100 characters.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(inputToValidate.validity.patternMismatch) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Author contains invalid characters.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else {
+        //Calling the "cleanFormFieldError" function, which removes the styling and error message from a form field.
         cleanFormFieldError(inputToValidate);
         
+        //Due to a validation, the function returns "true".
         return true;
     }
 }
 
+//Creating the "validateYear" function, which is responsible for validating the input year text through various checks; it styles the form field and displays an error message and returning "false" if an issue is found, or clears the error and message and returning "true" if everything is correct.
 function validateYear(inputToValidate) {
+    //An "if-else if-else" code block responsible for containing all validation checks for a book year.
     if(inputToValidate.value.length === 0) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Year is Required.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(inputToValidate.value.trim().length === 0) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Year cannot contain only spaces.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(Number(inputToValidate.value) <= 0) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Year must be a positive, non-null integer.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(/[^0-9.,]/.test(inputToValidate.value)) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Year must be numeric.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(/^0[0-9]+/.test(inputToValidate.value)) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Year cannot contain leading zeros.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(/[.,]/.test(inputToValidate.value)) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Year must be an integer.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(selectPeriodSave.value === "B.C." && Number(inputToValidate.value) > 3300) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Invalid year for the period B.C.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else if(selectPeriodSave.value === "A.C." && Number(inputToValidate.value) > new Date().getFullYear()) {
+        //Calling the "implementErrorFormField" function, which takes the HTML input and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(inputToValidate, "Invalid year for the period A.C.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else {
+        //Calling the "cleanFormFieldError" function, which removes the styling and error message from a form field.
         cleanFormFieldError(inputToValidate);
         
+        //Due to a validation, the function returns "true".
         return true;
     }
 }
 
+//Creating the "validatePeriod" function, which is responsible for validating the select period text through a check; it styles the form field and displays an error message and returning "false" if an issue is found, or clears the error and message and returning "true" if everything is correct.
 function validatePeriod(selectToValidate) {
+    //An "if-else" code block responsible for containing all validation checks for a book period.
     if(selectToValidate.value.trim() !== "B.C." && selectToValidate.value.trim() !== "A.C.") {
+        //Calling the "implementErrorFormField" function, which takes the HTML select and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(selectToValidate, "Select the historical period.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else {
+        //Calling the "cleanFormFieldError" function, which removes the styling and error message from a form field.
         cleanFormFieldError(selectToValidate);
         
+        //Due to a validation, the function returns "true".
         return true;
     }
 }
 
+//Creating the "validateStatus" function, which is responsible for validating the select status text through a check; it styles the form field and displays an error message and returning "false" if an issue is found, or clears the error and message and returning "true" if everything is correct.
 function validateStatus(selectToValidate) {
+    //An "if-else" code block responsible for containing all validation checks for a book status.
     if(selectToValidate.value.trim() !== "I want to read" && selectToValidate.value.trim() !== "Reading" && selectToValidate.value.trim() !== "Read") {
+        //Calling the "implementErrorFormField" function, which takes the HTML select and an error message and applies the appropriate error styling to the form field.
         implementErrorFormField(selectToValidate, "Select the book's status.");
         
+        //Due to an invalidation, the function returns "false".
         return false;
     } else {
+        //Calling the "cleanFormFieldError" function, which removes the styling and error message from a form field.
         cleanFormFieldError(selectToValidate);
         
+        //Due to a validation, the function returns "true".
         return true;
     }
 }
