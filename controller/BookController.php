@@ -46,7 +46,7 @@
                 header("Location: index.php");
                 exit();
             } else {
-                //Declaring variable: Object of the class "BookModel".
+                //Declaring variable: object of the class "BookModel".
                 $model = new BookModel();
 
                 //A "try-catch" code block attempts to check if the book is a duplicate and, if not, save it. If an exception is thrown during the book verification and saving processes, the appropriate error message is stored in the "$_SESSION" superglobal variable, and the algorithm redirects to "index.php".

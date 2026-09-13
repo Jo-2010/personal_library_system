@@ -13,10 +13,9 @@
 <body>
     <h1 class="mainTitleLibrary">Personal library</h1>
     <?php
-        //Adding, in a non-necessary manner, the "table.php" and "formulary.php" files to display the books and make the form for saving a book available.
+        //Adding, in a non-necessary manner, the "table.php" and "formulary.php" files to display the books and make the form for saving a book available, and destroying the following associative indices of the "$_SESSION" superglobal variable: "errors", "oldValues", "message", and "messageFormSave".
         include __DIR__ . "/table.php";
         include __DIR__ . "/formulary.php";
-        //Destroying the following associative indices of the "$_SESSION" superglobal variable: "errors", "oldValues", "message", and "messageFormSave".
         unset($_SESSION['errors']);
         unset($_SESSION['oldValues']);
         unset($_SESSION['messageTableBooks']);

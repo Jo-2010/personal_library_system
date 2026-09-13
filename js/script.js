@@ -243,35 +243,46 @@ function validateStatus(selectToValidate) {
     }
 }
 
+//Creating the "validateFormSave" function, which is responsible for calling all other functions that validate book attributes, storing their boolean return values ​​in variables, and preventing the form from being submitted if any of them return "false".
 function validateFormSave(event) {
+    //Declaring variables: the boolean return values ​​from each of the book attribute validation functions, based on the current contents of the corresponding HTML input and select elements.
     const validatedTitle = validateTitle(inputTitleSave);
     const validatedAuthor = validateAuthor(inputAuthorSave);
     const validatedYear = validateYear(inputYearSave);
     const validatedPeriod = validatePeriod(selectPeriodSave);
     const validatedStatus = validateStatus(selectStatusSave);
 
+    //An "if" code block that checks whether any of the variables returned "false." If so, the form submission event is prevented; otherwise, the form is submitted normally.
     if(!(validatedTitle && validatedAuthor && validatedYear && validatedPeriod && validatedStatus)) {
+        //Cancels the event's default behavior(prevents form submission).
         event.preventDefault();
     }
 }
 
-function implementErrorFormField(formField, errorMensage) {
+//Creating the "implementErrorFormField" function, which takes the form field and an error message to add the corresponding error classes to the form field and "span" tags and display the message.
+function implementErrorFormField(formField, errorMessage) {
+    //Adding the error styling class to the form field, adding the error message in the "span" tag, and adding the error class to the "span" tag within the message.
     formField.classList.add("errorInput");
-    formField.nextElementSibling.textContent = errorMensage;
-    formField.nextElementSibling.classList.add("errorMensageInput");
+    formField.nextElementSibling.textContent = errorMessage;
+    formField.nextElementSibling.classList.add("errorMessageInput");
 }
 
-//Functions to clean form field errors in the save formulary.
+//Creating the "cleanFormFieldError" function, which takes a form field, removes its error styling, and clears the error message styling and text.
 function cleanFormFieldError(formField) {
+    //Removing the error styling class in the form field, removing the error message in the "span" tag, and removing the error class in the "span" tag of the message.
     formField.classList.remove("errorInput");
     formField.nextElementSibling.textContent = "";
-    formField.nextElementSibling.classList.remove("errorMensageInput");
+    formField.nextElementSibling.classList.remove("errorMessageInput");
 }
 
+//Creating the "cleanAllFormFieldsErrors" function, which takes all the form fields for saving a book and repeatedly calls the "cleanFormFieldError" function for each form field stored in the variable.
 function cleanAllFormFieldsErrors() {
+    //Declaring a variable: DOM elements containing all the form fields for saving a book, using a CSS selector.
     const inputsSelects = document.querySelectorAll('#formSaveBook input:not([type="submit"]):not([type="reset"]), #formSaveBook select');
 
+    //Using the "forEach" method to iterate over the "nodeList" and remove the styling from each HTML form field, based on the code block passed as a parameter.
     inputsSelects.forEach((formField) => {
+        //Calling the "cleanForm FieldError" function, which takes an HTML form field and removes the error styling from it.
         cleanFormFieldError(formField);
     });
 }

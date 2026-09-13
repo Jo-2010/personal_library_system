@@ -178,7 +178,7 @@ table tbody tr:hover td {
 }
 
 /*Styling for spans with the class "errorMensageInput" located within tags with the class "labelInputUni".*/
-.labelInputUni span.errorMensageInput {
+.labelInputUni span.errorMessageInput {
     transition: 0.2s;
     font-family: "EB Garamond", serif;
     color: #FF0000;
