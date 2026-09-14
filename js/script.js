@@ -42,7 +42,7 @@ formSave.addEventListener("reset", () => {
     //Calling the "setTimeout" function so that the form fields are cleared first, and only then the code block is executed.
     setTimeout(() => {
         //Calling the functions "cleanAllFormFieldsErrors" and—twice—"changeColorOptionSelected" to clear error styling on form fields when resetting the form, and to revert the colors to the original option for two HTML select elements.
-        cleanAllFormFieldsErrors();
+        cleanAllFormFieldsErrors('#formSaveBook input:not([type="submit"]):not([type="reset"]), #formSaveBook select');
         changeColorOptionSelected(selectPeriodSave);
         changeColorOptionSelected(selectStatusSave);
     }, 0);
@@ -276,9 +276,9 @@ function cleanFormFieldError(formField) {
 }
 
 //Creating the "cleanAllFormFieldsErrors" function, which takes all the form fields for saving a book and repeatedly calls the "cleanFormFieldError" function for each form field stored in the variable.
-function cleanAllFormFieldsErrors() {
+function cleanAllFormFieldsErrors(CssQuerySelector) {
     //Declaring a variable: DOM elements containing all the form fields for saving a book, using a CSS selector.
-    const inputsSelects = document.querySelectorAll('#formSaveBook input:not([type="submit"]):not([type="reset"]), #formSaveBook select');
+    const inputsSelects = document.querySelectorAll(CssQuerySelector);
 
     //Using the "forEach" method to iterate over the "nodeList" and remove the styling from each HTML form field, based on the code block passed as a parameter.
     inputsSelects.forEach((formField) => {

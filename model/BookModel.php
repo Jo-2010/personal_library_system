@@ -1,7 +1,7 @@
 <?php
     //Creation and modeling of the "BookModel" class—A class that actually performs the actions modifying the database(books.csv) and throws exceptions if any part of the algorithm fails, while also offering the ability to check for duplicate books.
     class BookModel {
-        //Creating the "getAll" method, It is responsible for iterating through the database file(books.csv), capturing valid book rows, storing them in the "$books" array, closing the file, and returning the "$books" array.
+        //Creating the "getAll" method, it is responsible for iterating through the database file(books.csv), capturing valid book rows, storing them in the "$books" array, closing the file, and returning the "$books" array.
         public function getAll() {
             //Declaring variables: CSV file of the books(pointer to "read").
             $fileBooks = @fopen(__DIR__ . "/../data/books.csv", "r");
@@ -32,8 +32,9 @@
 
             //An "if" code block that checks if the pointer file are not in the end of the CSV file. If so, it logs the error to "error.log" and throws an exception.
             if(feof($fileBooks) === false) {
-                //Calling the function "error_log" to write a message of log in "error.log" more easily.
+                //Calling the function "error_log" to write a message of log in "error.log" more easily and to close the CSV file's pointer.
                 error_log("[" . date("Y-m-d H:i:s") . "] ERROR: Failed while reading records from 'books.csv'." . PHP_EOL, 3, __DIR__ . "/../logs/error.log");
+                @fclose($fileBooks);
 
                 //Throwing an exception with the message "READ_FILE" for indicate the error type.
                 throw new Exception("READ_FILE");
@@ -75,8 +76,9 @@
 
             //An "if" code block that checks if the file was written correctly with the book's attributes. If don't, it logs the error to "error.log" and throws an exception.
             if($fileWasWritten === false) {
-                //Calling the function "error_log" to write a message of log in "error.log" more easily.
+                //Calling the function "error_log" and "fclose" to write a message of log in "error.log" more easily and to close the CSV file's pointer.
                 error_log("[" . date("Y-m-d H:i:s") . "] ERROR: Failed to write data to 'books.csv'." . PHP_EOL, 3, __DIR__ . "/../logs/error.log");
+                @fclose($fileBooks);
 
                 //Throwing an exception with the message "WRITE_FILE" for indicate the error type.
                 throw new Exception("WRITE_FILE");
@@ -194,7 +196,7 @@
 
             //An "if" code block that checks if the pointer file are not in the end of the CSV file. If so, it logs the error to "error.log" and throws an exception.
             if(feof($fileBooks) === false) {
-                //Calling the functions "error_log" and "fclose" to write a message of log in "error.log" more easily and to close the CSV file's pointer .
+                //Calling the functions "error_log" and "fclose" to write a message of log in "error.log" more easily and to close the CSV file's pointer.
                 error_log("[" . date("Y-m-d H:i:s") . "] ERROR: Failed while reading 'books.csv' during duplicate-book verification." . PHP_EOL, 3, __DIR__ . "/../logs/error.log");
                 @fclose($fileBooks);
 

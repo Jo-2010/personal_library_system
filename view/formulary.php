@@ -7,8 +7,8 @@
         <span class="<?= isset($_SESSION['errors']['title']) ? 'errorMensageInput' : '' ?>"><?= $_SESSION['errors']['title'] ?? "" ?></span>   
     </div>
     <div class="labelInputUni">
-        <label for="authorBook">Author:</label>
-        <input type="text" name="author" value="<?= $_SESSION['oldValues']['author'] ?? '' ?>" class="<?= isset($_SESSION['errors']['author']) ? 'errorInput' : '' ?>" id="authorBook" minlength="2" maxlength="100" pattern="[\p{L}\p{M} .'\-]+" placeholder="Author of this book..." required>
+        <label for="authorBook">Author(s):</label>
+        <input type="text" name="author" value="<?= $_SESSION['oldValues']['author'] ?? '' ?>" class="<?= isset($_SESSION['errors']['author']) ? 'errorInput' : '' ?>" id="authorBook" minlength="2" maxlength="100" pattern="[\p{L}\p{M} .'\-]+" placeholder="Author(s) of this book..." required>
         <span class="<?= isset($_SESSION['errors']['author']) ? 'errorMensageInput' : '' ?>"><?= $_SESSION['errors']['author'] ?? "" ?></span>
     </div>
     <div class="labelInputUni">

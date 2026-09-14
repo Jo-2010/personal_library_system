@@ -1,26 +1,26 @@
 <?php
-    //Calling functions to start a session and set the time zone to America/São Paulo.
+    //Calling the functions "session_start" and "date_default_timezone_set" to start a session and set the time zone to America/São Paulo.
     session_start();
     date_default_timezone_set('America/Sao_Paulo');
 
-    //Adding, In a necessary and unique way, the "BookController.php" file, which contains the algorithm for the "BookController" class.
+    //Adding, in a necessary and unique way, the "BookController.php" file, which contains the algorithm for the "BookController" class.
     require_once "controller/BookController.php";
 
-    //Declaring variables: Action the user wishes to perform, received upon submitting a form to "index.php" itself via the "GET" method, and an object of the class "BookController".
+    //Declaring variables: the action the user wishes to perform, received when submitting a form to "index.php" via the "GET" method in the URL. If no action is present in the URL, the variable remains empty. Also, an object of the "BookController" class.
     $action = $_GET['action'] ?? "";
     $controller = new BookController();
 
     //A "switch-case" code block to define what the algorithm will do for each type of desired action: save, remove, search or edit.
     switch($action) {
         case "save":
-            //Declaring variables: Book title, author, year, period, and status sent via the "POST" method using the save form.
+            //Declaring variables: book title, author, year, period, and status sent via the "POST" method using the save form.
             $title = $_POST['title'];
             $author = $_POST['author'];
             $year = $_POST['year'];
             $period = $_POST['period'];
             $status = $_POST['status'];
 
-            //Calling the save method from the object of the class "BookController".
+            //Calling the save method from the object of the class "BookController" to save a book.
             $controller->save($title, $author, $year, $period, $status);
         case "remove":
 
@@ -37,10 +37,10 @@
 
     //A "try-catch" code block to attempt to retrieve all books from the database(books.csv) and, should an exception be thrown, return the correct error message.
     try {
-        //Declaring variable: An array of books from the method "getAll" of the object.
+        //Declaring variable: an array of books from the method "getAll" of the object.
         $books = $controller->getAll();
     } catch(Exception $e) {
-        //Declaring variable: An a empty array.
+        //Declaring variable: a empty array.
         $books = [];
         
         //A "switch-case" code block to define what message of exception will be release based on the error occurred: OPEN_FILE, READ_FILE or CLOSE_FILE.

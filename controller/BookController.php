@@ -1,12 +1,12 @@
 <?php
-    //Adding, In a necessary and unique way, the "BookModel.php" file, which contains the algorithm for the "BookModel" class.
+    //Adding, in a necessary and unique way, the "BookModel.php" file, which contains the algorithm for the "BookModel" class.
     require_once __DIR__ . "/../model/BookModel.php";
 
     //Creation and modeling of the "BookController" class—the intermediary between what the user sees and the data management layer—which decides whether or not to execute operations on the "model" based on data received from the "view".
     class BookController {
-        //Creating the "getAll" method, which is responsible for instantiating the "BookModel" class, calling the "BookModel's" "getAll" method, and returning an array of books saved in the database(books.csv) or throwing an exception based on the one thrown by "BookModel".
+        //Creating the "getAll" method, which is responsible for instantiating the "BookModel" class, calling the BookModel's getAll method, and returning an array of books saved in the database(books.csv) or throwing an exception based on the one thrown by "BookModel".
         public function getAll() {
-            //Declaring variable: Object of the class "BookModel".
+            //Declaring variable: an object of the class "BookModel".
             $model = new BookModel();
 
             //A "try-catch" code block where we attempt to use the "getAll" method of the "BookModel" object stored in "$model" to retrieve the books from the database(books.csv) and store them in the "$books" variable. If an exception is thrown by this "model" method, we re-throw that same exception.
@@ -42,7 +42,7 @@
                     'status' => $status
                 ];
 
-                //Calling functions to redirect the user back to the home page(index.php) and immediately terminates script execution to ensure that no further processing or unintended data writing occurs after validation, error handling, or successful operation.
+                //Calling the functions "header" and "exit" to redirect the user back to the home page(index.php) and immediately terminates script execution to ensure that no further processing or unintended data writing occurs after validation, error handling, or successful operation.
                 header("Location: index.php");
                 exit();
             } else {
@@ -67,7 +67,7 @@
                             "status" => $status
                         ];
 
-                        //Calling functions to redirect the user back to the home page(index.php) and immediately terminates script execution to ensure that no further processing or unintended data writing occurs after validation, error handling, or successful operation.
+                        //Calling the functions "header" and "exit" to redirect the user back to the home page(index.php) and immediately terminates script execution to ensure that no further processing or unintended data writing occurs after validation, error handling, or successful operation.
                         header("Location: index.php");
                         exit();
                     } else {
@@ -80,7 +80,7 @@
                             "type" => "success"
                         ];
 
-                        //Calling functions to redirect the user back to the home page(index.php) and immediately terminates script execution to ensure that no further processing or unintended data writing occurs after validation, error handling, or successful operation.
+                        //Calling the functions "header" and "exit" to redirect the user back to the home page(index.php) and immediately terminates script execution to ensure that no further processing or unintended data writing occurs after validation, error handling, or successful operation.
                         header("Location: index.php");
                         exit();
                     }
@@ -128,7 +128,7 @@
                         break;
                     }
 
-                    //Calling functions to redirect the user back to the home page(index.php) and immediately terminates script execution to ensure that no further processing or unintended data writing occurs after validation, error handling, or successful operation.
+                    //Calling the functions "header" and "exit" to redirect the user back to the home page(index.php) and immediately terminates script execution to ensure that no further processing or unintended data writing occurs after validation, error handling, or successful operation.
                     header("Location: index.php");
                     exit();
                 }
