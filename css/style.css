@@ -217,11 +217,11 @@ table tbody tr:hover td {
 .submitEraseUni input {
     width: 75px;
     padding: 0.4rem;
-    border: 2px solid #6e6e6e;
+    border: 2px solid #6E6E6E;
     border-radius: 5px;
     font-family: "EB Garamond", serif;
     font-size: 1.1rem;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     cursor: pointer;
     box-shadow: 5px 5px 10px #000000;
 }
@@ -234,16 +234,109 @@ table tbody tr:hover td {
 
 /*Styling for form submission inputs located within tags with the class "submitEraseUni" when the mouse pointer hovers over them.*/
 .submitEraseUni input[type="submit"]:hover {
-    background-color: #baffba;
-    border-color: #43ca00;
-    box-shadow: 0 0 8px #007b00;
+    background-color: #BAFFBA;
+    border-color: #43CA00;
+    box-shadow: 0 0 8px #007B00;
     transition: 0.2s;
 }
 
 /*Styling for form reset inputs located within tags with the class "submitEraseUni" when the mouse pointer hovers over them.*/
 .submitEraseUni input[type="reset"]:hover {
-    background-color: #ffbaba;
-    border-color: #d32f2f;
-    box-shadow: 0 0 8px #7b0000;
+    background-color: #FFBABA;
+    border-color: #D32F2F;
+    box-shadow: 0 0 8px #7B0000;
     transition: 0.2s;
+}
+
+body.modalOpen {
+    overflow: hidden;
+}
+
+.duplicateOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: #00000080;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.duplicateConfirmation {
+    height: min(650px, 90%);
+    width: min(500px, 90%);
+    padding: 1.5rem;
+    border-radius: 15px;
+    background-color: #DDDDDD;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.duplicateConfirmation h2 {
+    font-family: "EB Garamond", serif;
+    font-size: 1.75rem;
+    white-space: nowrap;
+}
+
+.textsPossibleDuplicate {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.textsPossibleDuplicate p, .textsPossibleDuplicate div {
+    font-family: "EB Garamond", serif;
+    font-size: 1.25rem;
+}
+
+.titleAuthorDuplicate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: center;
+}
+
+.duplicateActions {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.duplicateActions input {
+    border: none;
+    border-radius: 30px;
+    width: 150px;
+    padding: 0.75rem;
+    font-family: "EB Garamond", serif;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.duplicateActions input.inputCancel {
+    background-color: #BE0000;
+}
+
+.duplicateActions input.inputCancel:hover {
+    transition: 0.2s;
+    transform: scale(1.03);
+}
+
+.duplicateActions input.inputAddAnyway {
+    background-color: #007B00;
+}
+
+.duplicateActions input.inputAddAnyway:hover {
+    transition: 0.2s;
+    transform: scale(1.03);
 }
