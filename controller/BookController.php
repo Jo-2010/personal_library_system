@@ -52,12 +52,8 @@
                 //A "try-catch" code block attempts to check if the book is a duplicate and, if not, save it. If an exception is thrown during the book verification and saving processes, the appropriate error message is stored in the "$_SESSION" superglobal variable, and the algorithm redirects to "index.php".
                 try {
                     //An "if-else" code block that checks whether the received attributes—title and author—correspond to a book that is already registered. If so, it saves error messages and the form fields' previous values ​​and redirects to "index.php"; otherwise, it saves the book, stores a success message in the session, and returns to "index.php".
-                    if($model->exists(trim($title), trim($author))) {
-                        //Assigning two additional associative indices—"text" and "type"—to the "messageFormSave" associative index of the "$_SESSION" superglobal, in order to store the text to be displayed and the CSS class to be used for the message.
-                        $_SESSION["messageFormSave"] = [
-                            "text" => "This book is already registered in your library.",
-                            "type" => "warning"
-                        ];
+                    if($model->exists(trim($title), trim($author)) && !isset($_SESSION['possibleDuplicate'])) {
+                        $_SESSION['possibleDuplicate'] = true;
                         //Assigning five associative keys to the "oldValues" associative key of the "$_SESSION" superglobal, representing the five values ​​received from the form that are to be returned to it via a session variable.
                         $_SESSION["oldValues"] = [
                             "title" => $title,
@@ -74,6 +70,8 @@
                         //Calling the method "save" of the object to save a book.
                         $model->save(trim($title), trim($author), trim($year), trim($period), trim($status));
 
+                        unset($_SESSION['possibleDuplicate']);
+                        
                         //Assigning two additional associative indices—"text" and "type"—to the "messageFormSave" associative index of the "$_SESSION" superglobal, in order to store the text to be displayed and the CSS class to be used for the message.
                         $_SESSION["messageFormSave"] = [
                             "text" => "The book was saved successfully.",

@@ -22,6 +22,20 @@
 
             //Calling the save method from the object of the class "BookController" to save a book.
             $controller->save($title, $author, $year, $period, $status);
+        break;
+
+        case "confirmSave":
+            if(isset($_POST['addAnyway'])) {
+                $controller->save($_SESSION['oldValues']['title'], $_SESSION['oldValues']['author'], $_SESSION['oldValues']['year'], $_SESSION['oldValues']['period'], $_SESSION['oldValues']['status']);
+            } else {
+                unset($_SESSION['possibleDuplicate']);
+                unset($_SESSION['oldValues']);
+
+                header("Location: index.php");
+                exit();
+            }
+        break;
+
         case "remove":
 
         break;
