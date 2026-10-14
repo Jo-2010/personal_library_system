@@ -11,7 +11,7 @@
     <title>Personal library</title>
 </head>
 <body class="<?= isset($_SESSION['possibleDuplicate'], $_SESSION['oldValues']) ? "modalOpen" : '' ?>">
-    <h1 class="mainTitleLibrary"><?php var_dump($_SESSION) ?></h1>
+    <h1 class="mainTitleLibrary">Personal library</h1>
     <?php
         //Adding, in a non-necessary manner, the "table.php" and "formulary.php" files to display the books and make the form for saving a book available, and destroying the following associative indices of the "$_SESSION" superglobal variable: "errors", "oldValues", "messageTableBooks", and "messageFormSave".
         include __DIR__ . "/table.php";
@@ -24,8 +24,8 @@
                 <div class="textsPossibleDuplicate">
                     <p>A book with the same title and author is already registered in your library:</p>
                     <div class="titleAuthorDuplicate">
-                        <span>TITLE: <?= $_SESSION['oldValues']['title'] ?></span>
-                        <span>AUTHOR: <?= $_SESSION['oldValues']['author'] ?></span>
+                        <span>TITLE: <?= $_SESSION['oldValues']['title'] ?? $_SESSION['possibleDuplicate'] ?></span>
+                        <span>AUTHOR: <?= $_SESSION['oldValues']['author'] . isset($_SESSION['oldValues'])?></span>
                     </div>
                     <p>This may be another edition, translation or version of the same work. Are you sure you want to add this book?</p>
                 </div>
