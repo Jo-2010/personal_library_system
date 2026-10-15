@@ -11,7 +11,7 @@
     <title>Personal library</title>
 </head>
 <body class="<?= isset($_SESSION['possibleDuplicate'], $_SESSION['oldValues']) ? "modalOpen" : '' ?>">
-    <h1 class="mainTitleLibrary">Personal library</h1>
+    <h1 class="mainTitleLibrary" id="mainTitleLibrary">Personal library</h1>
     <?= !empty($books) ? '<a href="#titleFormSaveBook" class="redirectLink">"Go to the form for saving a book."</a>' : "" ?>
     <?php
         //Adding, in a non-necessary manner, the "table.php" and "formulary.php" files to display the books and make the form for saving a book available, and destroying the following associative indices of the "$_SESSION" superglobal variable: "errors", "oldValues", "messageTableBooks", and "messageFormSave".
@@ -38,9 +38,12 @@
         </div>
     <?php endif; ?>
     <?php
+        //Resetting the 'errors', 'messageTableBooks', and 'messageFormSave' associative keys within the '$_SESSION' superglobal from scratch.
         unset($_SESSION['errors'], $_SESSION['messageTableBooks'], $_SESSION['messageFormSave']);
         
+        //An "if" code block which sees if the associative key 'possibleDuplicate' of the superglobal "$_SESSION" was not initialized. if wasn't, it will reset the associative key 'oldValues' in the superglobal "$_SESSION".
         if(!isset($_SESSION['possibleDuplicate'])) {
+            //Resetting the 'oldValues' associative key in the superglobal "$_SESSION".
             unset($_SESSION['oldValues']);
         }
     ?>

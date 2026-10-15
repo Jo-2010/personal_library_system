@@ -51,10 +51,11 @@
 
                 //A "try-catch" code block attempts to check if the book is a duplicate and, if not, save it. If an exception is thrown during the book verification and saving processes, the appropriate error message is stored in the "$_SESSION" superglobal variable, and the algorithm redirects to "index.php".
                 try {
-                    //An "if-else" code block that checks whether the received attributes—title and author—correspond to a book that is already registered. If so, it saves error messages and the form fields' previous values ​​and redirects to "index.php"; otherwise, it saves the book, stores a success message in the session, and returns to "index.php".
+                    //An "if-else" code block that checks whether the received attributes—title and author—correspond to a book that is already registered and if was not initialized with a value the associative key 'possibleDuplicate' in the superglobal "$_SESSION". If so, it initializes the associative key 'possibleDuplicate', saves the send values of the form and redirects to "index.php"; otherwise, it saves the book, stores a success message in the session, and returns to "index.php".
                     if($model->exists(trim($title), trim($author)) && !isset($_SESSION['possibleDuplicate'])) {
+                        //Assigning in the associative key 'possibleDuplicate' the boolean value "true".
                         $_SESSION['possibleDuplicate'] = true;
-                        //Assigning five associative keys to the "oldValues" associative key of the "$_SESSION" superglobal, representing the five values ​​received from the form that are to be returned to it via a session variable.
+                        //Assigning five associative keys to the "oldValues" associative key of the "$_SESSION" superglobal, representing the five values received from the form that are to be returned to it via a session variable.
                         $_SESSION["oldValues"] = [
                             "title" => $title,
                             "author" => $author,
@@ -67,7 +68,7 @@
                         header("Location: index.php");
                         exit();
                     } else {
-                        //Calling the method "save" of the object to save a book.
+                        //Calling the method "save" of the object to save a book, and calling the method "unset" to reinitialize the associative keys 'possibleDuplicate' and 'oldValues' in the superglobal "$_SESSION".
                         $model->save(trim($title), trim($author), trim($year), trim($period), trim($status));
                         unset($_SESSION['possibleDuplicate'], $_SESSION['oldValues']);
                         

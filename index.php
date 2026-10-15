@@ -10,7 +10,7 @@
     $action = $_GET['action'] ?? "";
     $controller = new BookController();
 
-    //A "switch-case" code block to define what the algorithm will do for each type of desired action: save, remove, search or edit.
+    //A "switch-case" code block to define what the algorithm will do for each type of desired action: save, confirmSave, remove, search or edit.
     switch($action) {
         case "save":
             //Declaring variables: book title, author, year, period, and status sent via the "POST" method using the save form.
@@ -25,13 +25,16 @@
         break;
 
         case "confirmSave":
+            //An "if-else" code block which checks whether the associative key 'addAnyway' in the '$_SESSION' superglobal has been initialized with a value and is not null. If it has been initialized, we will save the book using the data stored in the 'oldValues' associative key within the '$_SESSION' superglobal. If it has not been initialized, we reset the associative keys in the '$_SESSION' superglobal and redirect the user to the book-saving form.
             if(isset($_POST['addAnyway'])) {
+                //Calling the save method from the object of the class "BookController" to save a book.
                 $controller->save($_SESSION['oldValues']['title'], $_SESSION['oldValues']['author'], $_SESSION['oldValues']['year'], $_SESSION['oldValues']['period'], $_SESSION['oldValues']['status']);
             } else {
+                //Resetting the associative keys 'possibleDuplicate' and 'oldValues' of the superglobal "$_SESSION" from scratch.
                 unset($_SESSION['possibleDuplicate']);
                 unset($_SESSION['oldValues']);
-
-                header("Location: index.php");
+                //Calling the functions "header" and "exit" to redirect the user back to the home page(index.php, in the save book form) and immediately terminates script execution to ensure that no further processing or unintended data writing occurs after validation, error handling, or successful operation.
+                header("Location: index.php#titleFormSaveBook");
                 exit();
             }
         break;

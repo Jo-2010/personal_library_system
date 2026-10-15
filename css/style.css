@@ -174,7 +174,7 @@ table tbody tr:hover td {
 /*Styling for inputs located within tags with the class "labelInputUni" when they are focused.*/
 .labelInputUni input:focus {
     border-color: #4A607A;
-    box-shadow: 5 5 10px #4A607A;
+    box-shadow: 5px 5px 10px #4A607A;
     transform: scale(1.02);
     transition: 0.2s; 
 }
@@ -187,10 +187,10 @@ table tbody tr:hover td {
 /*Styling for inputs with the class "errorInput" located within tags with the class "labelInputUni" when they are focused.*/
 .labelInputUni input.errorInput:focus {
     border-color: #BE0000 !important;
-    box-shadow: 5 5 10px #7B0000;
+    box-shadow: 5px 5px 10px #7B0000;
 }
 
-/*Styling for spans with the class "errorMensageInput" located within tags with the class "labelInputUni".*/
+/*Styling for spans with the class "errorMessageInput" located within tags with the class "labelInputUni".*/
 .labelInputUni span.errorMessageInput {
     transition: 0.2s;
     font-family: "EB Garamond", serif;
@@ -239,13 +239,13 @@ table tbody tr:hover td {
     box-shadow: 5px 5px 10px #000000;
 }
 
-/*Styling for inputs located within tags with the class "submitEraseUni" when the mouse pointer hovers over them.*/
+/*Styling for inputs located within tags with the class "submitEraseUni" when the mouse pointer hovers over them or when the user navigates to the input with tab key.*/
 .submitEraseUni input:hover, .submitEraseUni input:focus {
     transform: scale(1.02);
     transition: 0.2s;
 }
 
-/*Styling for form submission inputs located within tags with the class "submitEraseUni" when the mouse pointer hovers over them.*/
+/*Styling for form submission inputs located within tags with the class "submitEraseUni" when the mouse pointer hovers over them or when the user navigates to the input with tab key.*/
 .submitEraseUni input[type="submit"]:hover, .submitEraseUni input[type="submit"]:focus {
     background-color: #BAFFBA;
     border-color: #43CA00;
@@ -253,7 +253,7 @@ table tbody tr:hover td {
     transition: 0.2s;
 }
 
-/*Styling for form reset inputs located within tags with the class "submitEraseUni" when the mouse pointer hovers over them.*/
+/*Styling for form reset inputs located within tags with the class "submitEraseUni" when the mouse pointer hovers over them or when the user navigates to the input with tab key.*/
 .submitEraseUni input[type="reset"]:hover, .submitEraseUni input[type="reset"]:focus {
     background-color: #FFBABA;
     border-color: #D32F2F;
