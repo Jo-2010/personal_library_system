@@ -54,7 +54,7 @@
         //Declaring variable: an array of books from the method "getAll" of the object.
         $books = $controller->getAll();
     } catch(Exception $e) {
-        //Declaring variable: a empty array.
+        //Declaring variable: an empty array.
         $books = [];
         
         //A "switch-case" code block to define what message of exception will be release based on the error occurred: OPEN_FILE, READ_FILE or CLOSE_FILE.

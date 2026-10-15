@@ -1,5 +1,5 @@
-//Declaring variables: DOM element(span) for the mensage of error or sucess in the save form, DOM element(input) for the book's title, DOM element(input) for the book's author, DOM element(input) for the book's publication year, Dropdown menu(select) for the reading period, Dropdown menu(select) for the book's status and the form element handling the save action.(formulary to save a book)
-const spanMensageErrorSucess = document.getElementById("messageSuccessWarningError");
+//Declaring variables: DOM element(span) for the message of error or success in the save form, DOM element(input) for the book's title, DOM element(input) for the book's author, DOM element(input) for the book's publication year, Dropdown menu(select) for the reading period, Dropdown menu(select) for the book's status and the form element handling the save action.(formulary to save a book)
+const spanMessageErrorSuccess = document.getElementById("messageSuccessWarningError");
 const inputTitleSave = document.getElementById("titleBook");
 const inputAuthorSave = document.getElementById("authorBook");
 const inputYearSave = document.getElementById("yearBook");
@@ -8,7 +8,7 @@ const selectStatusSave = document.getElementById("statusBook");
 const formSave = document.getElementById("formSaveBook");
 
 //Calling the function "clearMessage" to clear the error, warning or success message from the form after a few seconds.
-clearMessage(spanMensageErrorSucess);
+clearMessage(spanMessageErrorSuccess);
 
 //Attaching event listeners to handle continuous validation of user input in form fields(inputs and selects), form submission(triggering a general validation), and form clearing(resetting all field errors, etc.).
 inputTitleSave.addEventListener("input", () => {

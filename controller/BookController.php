@@ -69,8 +69,7 @@
                     } else {
                         //Calling the method "save" of the object to save a book.
                         $model->save(trim($title), trim($author), trim($year), trim($period), trim($status));
-
-                        unset($_SESSION['possibleDuplicate']);
+                        unset($_SESSION['possibleDuplicate'], $_SESSION['oldValues']);
                         
                         //Assigning two additional associative indices—"text" and "type"—to the "messageFormSave" associative index of the "$_SESSION" superglobal, in order to store the text to be displayed and the CSS class to be used for the message.
                         $_SESSION["messageFormSave"] = [
@@ -79,7 +78,7 @@
                         ];
 
                         //Calling the functions "header" and "exit" to redirect the user back to the home page(index.php) and immediately terminates script execution to ensure that no further processing or unintended data writing occurs after validation, error handling, or successful operation.
-                        header("Location: index.php");
+                        header("Location: index.php#titleFormSaveBook");
                         exit();
                     }
                 } catch(Exception $e) {

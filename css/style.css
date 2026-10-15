@@ -7,6 +7,7 @@
 html {
     height: 100%;
     width: 100%;
+    scroll-behavior: smooth;
 }
 
 /*Standard setup for the "body" tag, defining how it behaves on the site—both as an element itself and in relation to the elements within it—and setting the site's background image.*/
@@ -33,6 +34,18 @@ body {
     font-size: 4rem;
     text-align: center;
     color: #FFFFFF;
+}
+
+.redirectLink {
+    margin-bottom: 0.83rem;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-family: "EB Garamond", serif;
+    color: #FFFFFF;
+}
+
+.redirectLink:hover {
+    text-decoration: underline;
 }
 
 /*Styling class for warning, error, and "no books" messages when the book table cannot be displayed.*/
