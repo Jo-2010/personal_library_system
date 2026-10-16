@@ -24,16 +24,16 @@
 
         //Creating the "save" method, which it is responsible for validating the book's attributes and checking whether the book already exists in the database(books.csv). If validation succeeds, the book is saved using the "save" method of the "BookModel" class instance, and a success message is recorded in the session. If any validation or functional errors occur during the process, the errors are stored in the session and the corresponding exceptions are raised.
         public function save($title, $author, $year, $period, $status) {
-            //Declaring variables: storing the boolean returns from the attribute text validation functions to determine whether the values ​​are valid.
+            //Declaring variables: storing the boolean returns from the attribute text validation functions to determine whether the values are valid.
             $validatedTitle = $this->validateTitle($title);
             $validatedAuthor = $this->validateAuthor($author);
             $validatedYear = $this->validateYear($year, $period);
             $validatedPeriod = $this->validatePeriod($period);
             $validatedStatus = $this->validateStatus($status);
 
-            //An "if-else" code block: if any attribute fails validation, the values ​​used in the submission are stored in the session and the user is redirected to "index.php"; otherwise, data verification proceeds.
+            //An "if-else" code block: if any attribute fails validation, the values used in the submission are stored in the session and the user is redirected to "index.php"; otherwise, data verification proceeds.
             if(!($validatedTitle && $validatedAuthor && $validatedYear && $validatedPeriod && $validatedStatus)) {
-                //Assigning five associative keys to the "oldValues" associative key of the "$_SESSION" superglobal, representing the five values ​​received from the form that are to be returned to it via a session variable.
+                //Assigning five associative keys to the "oldValues" associative key of the "$_SESSION" superglobal, representing the five values received from the form that are to be returned to it via a session variable.
                 $_SESSION['oldValues'] = [
                     'title' => $title,
                     'author' => $author,

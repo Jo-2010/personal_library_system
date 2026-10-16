@@ -22,7 +22,6 @@
 
             //Calling the save method from the object of the class "BookController" to save a book.
             $controller->save($title, $author, $year, $period, $status);
-        break;
 
         case "confirmSave":
             //An "if-else" code block which checks whether the associative key 'addAnyway' in the '$_SESSION' superglobal has been initialized with a value and is not null. If it has been initialized, we will save the book using the data stored in the 'oldValues' associative key within the '$_SESSION' superglobal. If it has not been initialized, we reset the associative keys in the '$_SESSION' superglobal and redirect the user to the book-saving form.
@@ -37,7 +36,6 @@
                 header("Location: index.php#titleFormSaveBook");
                 exit();
             }
-        break;
 
         case "remove":
 
