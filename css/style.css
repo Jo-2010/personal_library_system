@@ -46,8 +46,9 @@ body {
 }
 
 /*Hover animation(mouse over the element) in the links(tag "a") which helps in navigation of the system.*/
-.redirectLink:hover {
+.redirectLink:hover, .redirectLink:focus {
     text-decoration: underline;
+    outline: none;
 }
 
 /*Styling class for warning, error, and "no books" messages when the book table cannot be displayed.*/
@@ -174,11 +175,12 @@ table tbody tr:hover td {
 }
 
 /*Styling for inputs located within tags with the class "labelInputUni" when they are focused.*/
-.labelInputUni input:focus {
+.labelInputUni input:focus, .labelInputUni select:focus {
     border-color: #4A607A;
     box-shadow: 5px 5px 10px #4A607A;
     transform: scale(1.02);
-    transition: 0.2s; 
+    transition: 0.2s;
+    outline: none;
 }
 
 /*Styling for inputs with the class "errorInput" located within tags with the class "labelInputUni".*/
@@ -253,6 +255,7 @@ table tbody tr:hover td {
     border-color: #43CA00;
     box-shadow: 0 0 8px #007B00;
     transition: 0.2s;
+    outline: none;
 }
 
 /*Styling for form reset inputs located within tags with the class "submitEraseUni" when the mouse pointer hovers over them or when the user navigates to the input with tab key.*/
@@ -261,6 +264,7 @@ table tbody tr:hover td {
     border-color: #D32F2F;
     box-shadow: 0 0 8px #7B0000;
     transition: 0.2s;
+    outline: none;
 }
 
 /*Styling for the "body" tag when with the class "modalOpen". Prevent the work of scroll bar when the modal of duplicate book is activated.*/
