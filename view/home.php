@@ -28,7 +28,7 @@
                         <span>TITLE: <?= $_SESSION['oldValues']['title'] ?></span>
                         <span>AUTHOR: <?= $_SESSION['oldValues']['author'] ?></span>
                     </div>
-                    <p>This may be another edition, translation or version of the same work. Are you sure you want to add this book?</p>
+                    <p>This may be another copy in this bookshelf/table, edition, translation or version of the same work. Are you sure you want to add this book?</p>
                 </div>
                 <div class="duplicateActions">
                     <input type="submit" class="inputCancel" name="cancel" value="Cancel">
