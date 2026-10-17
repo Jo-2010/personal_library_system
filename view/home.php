@@ -11,8 +11,8 @@
     <title>Personal library</title>
 </head>
 <body class="<?= isset($_SESSION['possibleDuplicate'], $_SESSION['oldValues']) ? "modalOpen" : '' ?>">
-    <h1 class="mainTitleLibrary">Personal library</h1>
-    <?= !empty($books) ? '<a href="#titleFormSaveBook" class="redirectLink">"Go to the form for saving a book."</a>' : "" ?>
+    <h1 id="mainTitleLibrary" class="mainTitleLibrary">Personal library</h1>
+    <?= !empty($books) ? '<a href="#titleFormSaveBook" class="redirectLink">"Go to the form for saving a book"</a>' : "" ?>
     <?php
         //Adding, in a non-necessary manner, the "table.php" and "formulary.php" files to display the books and make the form for saving a book available, and destroying the following associative indices of the "$_SESSION" superglobal variable: "errors", "oldValues", "messageTableBooks", and "messageFormSave".
         include __DIR__ . "/table.php";

@@ -1,5 +1,6 @@
 <h2 class="saveBookTitle" id="titleFormSaveBook">Save a book</h2>
 <span id="messageSuccessWarningError" class="messageSuccessWarningError <?= $_SESSION['messageFormSave']['type'] ?? '' ?>"><?= $_SESSION['messageFormSave']['text'] ?? '' ?></span>
+<?= !empty($books) ? '<a href="#mainTitleLibrary" class="redirectLink">"Go to the beginning of bookshelf/table of books"</a>' : "" ?>
 <form class="formSaveBook" id="formSaveBook" action="index.php?action=save" method="post" novalidate>
     <div class="labelInputUni">
         <label for="titleBook">Title:</label>
