@@ -38,9 +38,12 @@
         </div>
     <?php endif; ?>
     <?php
+        //Resetting the 'errors', 'messageTableBooks', and 'messageFormSave' associative keys within the '$_SESSION' superglobal from scratch.
         unset($_SESSION['errors'], $_SESSION['messageTableBooks'], $_SESSION['messageFormSave']);
         
+        //An "if" code block which sees if the associative key 'possibleDuplicate' of the superglobal "$_SESSION" was not initialized. if wasn't, it will reset the associative key 'oldValues' in the superglobal "$_SESSION".
         if(!isset($_SESSION['possibleDuplicate'])) {
+            //Resetting the 'oldValues' associative key in the superglobal "$_SESSION".
             unset($_SESSION['oldValues']);
         }
     ?>

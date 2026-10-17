@@ -243,9 +243,9 @@ function validateStatus(selectToValidate) {
     }
 }
 
-//Creating the "validateFormSave" function, which is responsible for calling all other functions that validate book attributes, storing their boolean return values ​​in variables, and preventing the form from being submitted if any of them return "false".
+//Creating the "validateFormSave" function, which is responsible for calling all other functions that validate book attributes, storing their boolean return values in variables, and preventing the form from being submitted if any of them return "false".
 function validateFormSave(event) {
-    //Declaring variables: the boolean return values ​​from each of the book attribute validation functions, based on the current contents of the corresponding HTML input and select elements.
+    //Declaring variables: the boolean return values from each of the book attribute validation functions, based on the current contents of the corresponding HTML input and select elements.
     const validatedTitle = validateTitle(inputTitleSave);
     const validatedAuthor = validateAuthor(inputAuthorSave);
     const validatedYear = validateYear(inputYearSave);
