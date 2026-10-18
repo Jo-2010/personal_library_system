@@ -5,6 +5,8 @@ const inputAuthorSave = document.getElementById("authorBook");
 const inputYearSave = document.getElementById("yearBook");
 const selectPeriodSave = document.getElementById("periodBook");
 const selectStatusSave = document.getElementById("statusBook");
+const iconInputCoverSave = document.getElementById("iconBook");
+const inputCoverSave = document.getElementById("coverBook");
 const formSave = document.getElementById("formSaveBook");
 
 //Calling the function "clearMessage" to clear the error, warning or success message from the form after a few seconds.
@@ -33,6 +35,14 @@ selectStatusSave.addEventListener("change", () => {
     //Calling the functions "validateStatus" and "changeColorOptionSelected" to, respectively, validate the status text from the HTML input and change the color of the selected option in an HTML select element.
     validateStatus(selectStatusSave);
     changeColorOptionSelected(selectStatusSave);
+});
+iconInputCoverSave.addEventListener("click", () => {
+   inputCoverSave.click();
+});
+iconInputCoverSave.addEventListener("keydown", (event) => {
+    if(event.key === "Enter") {
+        inputCoverSave.click();
+    }
 });
 formSave.addEventListener("submit", (event) => {
     //Calling the "validateFormSave" function to trigger validation for all fields and determine whether to proceed with form submission.

@@ -194,6 +194,44 @@ table tbody tr:hover td {
     box-shadow: 5px 5px 10px #7B0000;
 }
 
+.labelInputUni div.dropZoneInputFile {
+    border: 2px dashed #FFFFFF;
+    height: 200px;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.labelInputUni i {
+    height: 35px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.labelInputUni i:focus-visible {
+    border: 2px solid #FFFFFF;
+    border-radius: 100%;
+    outline: none;
+}
+
+.labelInputUni span {
+    font-family: "EB Garamond", serif;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.labelInputUni input[type="file"] {
+    display: none;
+}
+
 /*Styling for spans with the class "errorMessageInput" located within tags with the class "labelInputUni".*/
 .labelInputUni span.errorMessageInput {
     transition: 0.2s;
@@ -208,6 +246,7 @@ table tbody tr:hover td {
     padding: 0.5rem;
     border: 2px solid #6E6E6E;
     border-radius: 5px;
+    cursor: pointer;
     color: #767676;
     box-shadow: 5px 5px 10px #000000;
 }
