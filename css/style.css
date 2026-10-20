@@ -217,12 +217,12 @@ table tbody tr:hover td {
 .labelInputUni div.inputFileMidTermState {
     border: 2px dashed #4A607A;
     color: #4A607A;
-    opacity: 0.7;
+    opacity: 0.9;
 }
 
 .labelInputUni div.inputFileGoodState {
-    border: 2px dashed #4A60FF;
-    color: #4A60FF;
+    border: 2px dashed #0091FF;
+    color: #0091FF;
 }
 
 .labelInputUni i {

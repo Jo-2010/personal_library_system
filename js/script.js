@@ -46,6 +46,7 @@ dropZoneInputFile.addEventListener("dragenter", (event) => {
 
     if(dragCounter === 1) {
         dropZoneInputFile.classList.add("inputFileMidTermState");
+        spanMessageInputCoverSave.textContent = "Drop the image here to add it.";
     }
 });
 dropZoneInputFile.addEventListener("dragover", (event) => (
@@ -58,6 +59,7 @@ dropZoneInputFile.addEventListener("dragleave", (event) => {
 
     if(dragCounter === 0) {
         dropZoneInputFile.classList.remove("inputFileMidTermState");
+        spanMessageInputCoverSave.textContent = "You can drag and drop the image here or click the arrow above to add it.";
     }
 });
 dropZoneInputFile.addEventListener("drop", (event) => {
@@ -67,6 +69,7 @@ dropZoneInputFile.addEventListener("drop", (event) => {
 
     dropZoneInputFile.classList.remove("inputFileMidTermState");
     dropZoneInputFile.classList.add("inputFileGoodState"); /*After, create the correct logic to good and error states.*/
+    spanMessageInputCoverSave.textContent = "Image added successfully!!!";
 });
 iconInputCoverSave.addEventListener("click", () => {
    inputCoverSave.click();
