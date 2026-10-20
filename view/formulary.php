@@ -38,9 +38,9 @@
     </div>
     <div class="labelInputUni">
         <label for="coverBook">Cover(optional):</label>
-        <div class="dropZoneInputFile">
+        <div id="dropZoneInputFile" class="dropZoneInputFile inputFileNormalState">
             <i id="iconBook" class="fa-solid fa-arrow-up-from-bracket fa-2xl" tabindex="0"></i>
-            <span>You can drag and drop the image here or click the arrow above to add it.</span>
+            <span id="messageInputFile">You can drag and drop the image here or click the arrow above to add it.</span>
             <input type="file" name="cover" id="coverBook" accept="image/jpeg, image/png, image/webp">
         </div>
     </div>

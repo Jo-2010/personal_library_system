@@ -5,7 +5,10 @@ const inputAuthorSave = document.getElementById("authorBook");
 const inputYearSave = document.getElementById("yearBook");
 const selectPeriodSave = document.getElementById("periodBook");
 const selectStatusSave = document.getElementById("statusBook");
+const dropZoneInputFile = document.getElementById("dropZoneInputFile");
+let dragCounter = 0;
 const iconInputCoverSave = document.getElementById("iconBook");
+const spanMessageInputCoverSave = document.getElementById("messageInputFile");
 const inputCoverSave = document.getElementById("coverBook");
 const formSave = document.getElementById("formSaveBook");
 
@@ -35,6 +38,35 @@ selectStatusSave.addEventListener("change", () => {
     //Calling the functions "validateStatus" and "changeColorOptionSelected" to, respectively, validate the status text from the HTML input and change the color of the selected option in an HTML select element.
     validateStatus(selectStatusSave);
     changeColorOptionSelected(selectStatusSave);
+});
+dropZoneInputFile.addEventListener("dragenter", (event) => {
+    event.preventDefault();
+
+    dragCounter++;
+
+    if(dragCounter === 1) {
+        dropZoneInputFile.classList.add("inputFileMidTermState");
+    }
+});
+dropZoneInputFile.addEventListener("dragover", (event) => (
+    event.preventDefault()
+));
+dropZoneInputFile.addEventListener("dragleave", (event) => {
+    event.preventDefault();
+
+    dragCounter--;
+
+    if(dragCounter === 0) {
+        dropZoneInputFile.classList.remove("inputFileMidTermState");
+    }
+});
+dropZoneInputFile.addEventListener("drop", (event) => {
+    event.preventDefault();
+
+    dragCounter = 0;
+
+    dropZoneInputFile.classList.remove("inputFileMidTermState");
+    dropZoneInputFile.classList.add("inputFileGoodState"); /*After, create the correct logic to good and error states.*/
 });
 iconInputCoverSave.addEventListener("click", () => {
    inputCoverSave.click();

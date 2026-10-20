@@ -195,7 +195,6 @@ table tbody tr:hover td {
 }
 
 .labelInputUni div.dropZoneInputFile {
-    border: 2px dashed #FFFFFF;
     height: 200px;
     width: 100%;
     padding: 1rem;
@@ -205,6 +204,27 @@ table tbody tr:hover td {
     align-items: center;
 }
 
+.labelInputUni div.inputFileNormalState {
+    border: 2px dashed #FFFFFF;
+    color: #FFFFFF;
+}
+
+.labelInputUni div.inputFileErrorState {
+    border: 2px dashed #FF0000;
+    color: #FF0000;
+}
+
+.labelInputUni div.inputFileMidTermState {
+    border: 2px dashed #4A607A;
+    color: #4A607A;
+    opacity: 0.7;
+}
+
+.labelInputUni div.inputFileGoodState {
+    border: 2px dashed #4A60FF;
+    color: #4A60FF;
+}
+
 .labelInputUni i {
     height: 35px;
     padding: 20px;
@@ -212,7 +232,6 @@ table tbody tr:hover td {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: #FFFFFF;
 }
 
 .labelInputUni i:focus-visible {
@@ -221,11 +240,11 @@ table tbody tr:hover td {
     outline: none;
 }
 
-.labelInputUni span {
+.labelInputUni span#messageInputFile {
     font-family: "EB Garamond", serif;
     font-size: 1.1rem;
     text-align: center;
-    color: #FFFFFF;
+    pointer-events: none;
 }
 
 .labelInputUni input[type="file"] {
